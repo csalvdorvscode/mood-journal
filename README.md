@@ -1,13 +1,13 @@
-
-
 # Mood Journal
 
-A simple Python terminal app to write journal entries, read them, and receive motivational quotes.
+A simple Python journal application that allows users to save personal entries, track moods, and read motivational quotes directly from the terminal.
 
 ## Features
 
 - Write journal entries
-- Save entries in a text file
+- Mood tracking system
+- Automatic date and time
+- JSON data storage
 - View saved entries
 - Random motivational quotes
 - Interactive terminal menu
@@ -15,14 +15,9 @@ A simple Python terminal app to write journal entries, read them, and receive mo
 ## Technologies Used
 
 - Python
+- JSON
+- Datetime module
 - IDLE
-- Text files (.txt)
-
-## How to Run
-
-1. Open the project folder
-2. Run `main.py`
-3. Use the menu options
 
 ## Project Structure
 
@@ -30,18 +25,34 @@ A simple Python terminal app to write journal entries, read them, and receive mo
 mood_journal/
 │
 ├── main.py
-├── journal.txt
+├── journal.json
 └── README.md
+```
+
+## How to Run
+
+1. Open the project folder
+2. Run `main.py`
+3. Use the terminal menu
+
+## Example Entry
+
+```json
+{
+    "date": "2026-05-28 18:45",
+    "mood": "Happy",
+    "entry": "Today was productive and calm."
+}
 ```
 
 ## Future Improvements
 
-- Add dates and timestamps
-- Mood tracker
-- JSON storage
-- Login system
+- Mood statistics
+- Search entries
+- Delete entries
 - GUI version
-- Statistics and analytics
+- User accounts
+- Mobile app version
 
 ## Author
 
