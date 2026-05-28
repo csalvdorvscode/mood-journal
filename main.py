@@ -1,6 +1,8 @@
 
 
 import random
+import json
+from datetime import datetime
 
 quotes = [
     "Everything starts with you.",
@@ -11,24 +13,53 @@ quotes = [
 
 
 def write_entry():
+
+    mood = input("How are you feeling today? ")
     entry = input("Write your journal entry: ")
 
-    with open("journal.txt", "a") as file:
-        file.write(entry + "\n")
+    date = datetime.now().strftime("%Y-%m-%d %H:%M")
+
+    new_entry = {
+        "date": date,
+        "mood": mood,
+        "entry": entry
+    }
+
+    try:
+
+        with open("journal.json", "r") as file:
+            data = json.load(file)
+
+    except:
+        data = []
+
+    data.append(new_entry)
+
+    with open("journal.json", "w") as file:
+        json.dump(data, file, indent=4)
 
     print("Entry saved successfully.\n")
 
 
 def view_entries():
-    try:
-        with open("journal.txt", "r") as file:
-            content = file.read()
 
-            if content == "":
+    try:
+
+        with open("journal.json", "r") as file:
+            data = json.load(file)
+
+            if not data:
                 print("No entries found.\n")
+
             else:
+
                 print("\n--- YOUR ENTRIES ---")
-                print(content)
+
+                for entry in data:
+
+                    print(f"\nDate: {entry['date']}")
+                    print(f"Mood: {entry['mood']}")
+                    print(f"Entry: {entry['entry']}")
 
     except FileNotFoundError:
         print("Journal file not found.\n")
