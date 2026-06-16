@@ -11,6 +11,7 @@ A simple Python journal application that allows users to save personal entries, 
 - View saved entries
 - Random motivational quotes
 - Mood statistics
+- Search entries by mood
 - Interactive terminal menu
 
 ## Technologies Used
@@ -48,10 +49,11 @@ mood_journal/
 
 ## Future Improvements
 
-- Mood statistics
-- Search entries
-- Search by mood
+## Future Improvements
+
 - Delete entries
+- Edit entries
+- Mood selector menu
 - GUI version
 - User accounts
 - Mobile app version
