@@ -97,6 +97,36 @@ def mood_stats():
     except FileNotFoundError:
         print("Journal file not found.\n")
 
+def search_by_mood():
+
+    search_mood = input("Enter mood to search: ")
+
+    try:
+
+        with open("journal.json", "r") as file:
+            data = json.load(file)
+
+        found = False
+
+        print("\n--- SEARCH RESULTS ---")
+
+        for entry in data:
+
+            if entry["mood"].lower() == search_mood.lower():
+
+                print(f"\nDate: {entry['date']}")
+                print(f"Mood: {entry['mood']}")
+                print(f"Entry: {entry['entry']}")
+
+                found = True
+
+        if not found:
+            print("No entries found for this mood.")
+
+        print()
+
+    except FileNotFoundError:
+        print("Journal file not found.\n")
 
 def random_quote():
     print("\n" + random.choice(quotes) + "\n")
@@ -111,7 +141,8 @@ def menu():
         print("2. View entries")
         print("3. Random quote")
         print("4. Mood statistics")
-        print("5. Exit")
+        print("5. Search by mood")
+        print("6. Exit")
 
         choice = input("Choose an option: ")
 
@@ -128,8 +159,10 @@ def menu():
 
             case "4":
                 mood_stats()
-
             case "5":
+                search_by_mood()
+
+            case "6":
                 print("Goodbye!")
                 break
 
